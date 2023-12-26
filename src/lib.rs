@@ -6,6 +6,9 @@ use smash::lua2cpp::*;
 
 pub use smashline_macro::*;
 
+mod effect;
+use effect::*;
+
 type FighterFrame = extern "C" fn(&mut L2CFighterCommon) -> L2CValue;
 type AgentFrame = extern "C" fn(&mut L2CFighterBase) -> L2CValue;
 type FighterFrameCallback = fn(&mut L2CFighterCommon);
@@ -119,4 +122,10 @@ extern "Rust" {
 
     pub fn add_fighter_init_callback(callback: FighterInit);
     pub fn add_agent_init_callback(callback: AgentInit);
+}
+
+#[skyline::main(name = "smashline")]
+pub fn main() {
+    skyline::patching::Patch::in_text(0x60bfb8).nop().unwrap();
+    skyline::install_hook!(load_fighter_effects);
 }
