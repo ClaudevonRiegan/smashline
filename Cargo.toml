@@ -11,6 +11,8 @@ skyline_smash = { git = "https://github.com/ClaudevonRiegan/skyline-smash.git", 
 # skyline_smash = { git = "https://github.com/ultimate-research/skyline-smash.git", features = ["weak_l2cvalue"] }
 # skyline_smash = { git = "https://github.com/ultimate-research/skyline-smash.git" }
 smashline-macro = { path = "./smashline-macro" }
+resources = { path = "./resources" }
+hash40 = "1"
 
 [profile.dev]
 panic = "abort"
